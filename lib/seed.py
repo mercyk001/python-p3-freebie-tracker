@@ -13,21 +13,25 @@ session = Session()
 
 Base.metadata.create_all(engine)
 
-# Optional: clear out old data for a fresh start
+#delete existing data to avoid duplicates
 session.query(Freebie).delete()
 session.query(Dev).delete()
 session.query(Company).delete()
 session.commit()
 
-# Create companies
-c1 = Company(name="TechCorp", founding_year=2000)
-c2 = Company(name="Webify", founding_year=1995)
-c3 = Company(name="DataSoft", founding_year=2010)
 
-# Create devs
-d1 = Dev(name="Alice")
+
+#create companies
+c1 = Company(name="Moringa", founding_year=2000)
+c2 = Company(name="Wthree", founding_year=1995)
+c3 = Company(name="Dengineering", founding_year=2010)
+
+#create developers
+d1 = Dev(name="Mercy")
 d2 = Dev(name="Bob")
-d3 = Dev(name="Carol")
+d3 = Dev(name="Bena")
+
+
 
 # Add and commit to get IDs assigned
 session.add_all([c1, c2, c3, d1, d2, d3])
@@ -44,4 +48,4 @@ f6 = Freebie(item_name="Pen", value=3, dev_id=d3.id, company_id=c2.id)
 session.add_all([f1, f2, f3, f4, f5, f6])
 session.commit()
 
-print("Database seeded!")
+print("Database seed done!")

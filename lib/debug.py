@@ -10,7 +10,7 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
     
-    # Fetch first entries
+    # Fetch first entries into the database
     company = session.query(Company).first()
     dev = session.query(Dev).first()
     freebie = session.query(Freebie).first()
@@ -33,7 +33,7 @@ if __name__ == '__main__':
 
     print("\n== Freebie.print_details() ==")
     if freebie:
-        print(freebie.print_details())  # e.g., "Alice owns a Mug from TechCorp"
+        print(freebie.print_details()) 
 
     print("\n== Company.give_freebie(dev, item_name, value) ==")
     if company and dev:
